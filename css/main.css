@@ -1,0 +1,202 @@
+/* ===================================
+              Whole Page
+=================================== */
+body {
+  font-family: 'Fresca', sans-serif;
+}
+
+#home, #whatido, #myworks, #aboutme, #contact {
+  height: 100vh;   
+  width: 100vw;
+}
+
+
+
+/* ===================================
+              Navbar
+=================================== */
+nav {
+  margin-bottom: 0;
+  position: fixed;
+  width: 100vw;
+  height: 50px;
+  top: 0;
+  background-color: rgba(0,0,0,1);
+}
+
+.active {
+  background-color: #666;
+}
+
+#navbar-logo {
+  float: left;
+  padding: 15px 15px;
+  color: #aaa;
+}
+
+#navbar-links {
+  float: right;
+}
+
+#navbar-links ul li {
+  position: relative;
+  display: inline;
+  padding: 15px 15px;
+  color: #aaa;
+}
+
+#navbar-links ul li:hover {
+  color: #fff;
+}
+
+
+/* ===================================
+              Home Section
+=================================== */
+#home {
+  
+  background-image: url("http://i.imgur.com/DcnYPgt.png");
+  background-size: cover;
+  background-color: rgba(0,0,0,0.3);
+}
+
+video {
+  height: 100vh;
+  opacity: 0.5;
+}
+
+#home p {
+  color: white;
+  font-size: 25px;
+  position: relative;
+  top: 75vh;
+  left: 45vw;
+}
+
+#chocobo {
+  background-image: url("../assets/images/chocobo.png");
+  background-repeat:no-repeat;
+  background-position: 0px -100px;
+  height: 100px;
+  width: 100px;
+  position: relative;
+  top: 70vh;
+  left: 100vw;
+}
+#home #filter {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.3);
+  position: absolute;
+  top: 0;
+}
+
+/* ===================================
+              Services Section
+=================================== */
+#whatido {
+  background-color: rgba(255,255,255,1);
+}
+#whatido #whatido-title h1{
+  margin: 0;
+  padding: 0.5em;
+  text-align: center;
+  font-size: 5em;
+}
+#whatido #whatido-title p {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: -10px;
+}
+#whatido .services {
+  margin-left: 4%;
+  text-align: center;
+  margin-top: 25px; 
+  float: left;
+  height: 50%;
+  width: 20%;
+}
+
+#whatido .services img {
+  margin: 25px;
+  height: 150px;
+  width: 150px;
+}
+
+/* ===================================
+              Works Section
+=================================== */
+#myworks {
+  background-color: red;
+}
+
+/* ===================================
+              About Section
+=================================== */
+#aboutme {
+  background-color: blue;
+}
+
+/* ===================================
+              Contact Section
+=================================== */
+#contact {
+  background-color: cyan;
+}
+
+/* ===================================
+              Animations
+=================================== */
+
+/* Services Section */
+.lift img{
+  position: relative;
+  -webkit-animation: liftImage 0.25s;
+  -moz-animation: liftImage 0.25s;
+  animation: liftImage 0.25s;
+  top: -10px;
+}
+@-webkit-keyframes liftImage{
+  0% {top: 0;}
+  100% {top: -10px;}
+}
+@-moz-keyframes liftImage{
+  0% {top: 0;}
+  100% {top: -10px;}
+}
+@keyframes liftImage{
+  0% {top: 0;}
+  100% {top: -10px;}
+}
+
+
+.drop img {
+  position: relative;
+  z-index: 0;
+  -webkit-animation: dropImage 0.25s;
+  -moz-animation: dropImage 0.25s;
+  animation: dropImage 0.25s;
+  top: 0;
+}
+
+@-webkit-keyframes dropImage
+{
+  0% {top: -10px;}
+  100% {top: 0;}
+}
+
+@-moz-keyframes dropImage
+{
+  0% {top: -10px;}
+  100% {top: 0;}
+}
+
+@keyframes dropImage
+{
+  0% {top: -10px;}
+  100% {top: 0;}
+}
+
+.lift h1 {
+  color: blue;
+}
