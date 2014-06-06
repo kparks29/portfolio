@@ -1,5 +1,35 @@
 $(document).ready(function(){
 
+/* ======================================================================
+Welcome Text Animation and Sound
+====================================================================== */
+  var text = document.getElementById("welcome").firstElementChild;
+  var time = 0;
+  var fontSize = 0;
+  var topPosition = text.offsetTop;
+  var soundClip = new Audio("http://www.nes-snes-sprites.com/Nes%20Soundtracks/snes%20mp3/Legend%20of%20Zelda,%20The%20-%20A%20Link%20to%20the%20Past/Zelda_Rescued.mp3");
+  soundClip.play();
+
+  var textGrower = setInterval(function(){
+    time += 50;
+    if (fontSize <= 60){
+      topPosition -= 5;
+      text.style.top = topPosition + "px";
+      text.style.fontSize = ++fontSize + "px";
+    }
+    if (time > 4000){
+      text.innerHTML = "Kendrick Parks<br /><br /><span style='font-size:24px'>A Full Stack Web Developer</span>"
+    }
+    if (time >= 5000){
+      soundClip.pause();
+      clearInterval(textGrower);
+    }
+  }, 50); 
+
+
+/* ======================================================================
+Chocobo Animation
+====================================================================== */
   var chocobo = document.getElementById("chocobo");
   var backgroundPosition = 0;
   var screenPosition = document.getElementById("home").offsetWidth + 100;
@@ -47,9 +77,7 @@ $(document).ready(function(){
   Add mouseover listener to whatido section
   ====================================================================== */
   var services = document.getElementsByClassName("services");
-  console.log(services[0].firstElementChild)
   for (var i=0; i<services.length; i++){
-    console.log(i);
     services[i].addEventListener("mouseover", function(){
       $(this).removeClass("drop");
       $(this).addClass("lift");
@@ -60,7 +88,6 @@ $(document).ready(function(){
   Add mouseout listener to whatido section
   ====================================================================== */
   var services = document.getElementsByClassName("services");
-  console.log(services[0].firstElementChild)
   for (var i=0; i<services.length; i++){
     services[i].addEventListener("mouseout", function(){
       $(this).removeClass("lift");
