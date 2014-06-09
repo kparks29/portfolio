@@ -97,6 +97,31 @@ Chocobo Animation
       $(this).addClass("drop");
     });
   }
+
+
+  //resize about me section here
+  window.onresize = function() {
+    var pokedex = document.getElementById("pokedex");
+    var kendrick = document.getElementById("kendrick");
+    var container = document.getElementById("aboutme");
+    var pokedexText = document.getElementById("pokedexText");
+    var height;
+    var positionRatio = parseFloat((pokedex.offsetWidth / 800).toFixed(2));
+
+    pokedex.style.width = (((container.offsetWidth / 1.75) / container.offsetWidth) * 100) + "%";
+    pokedex.style.height = (pokedex.offsetWidth * 0.75) + "px";
+    pokedex.style.backgroundPosition = (- (3655 / 4000) * pokedex.offsetWidth * 5.45) + "px 0";
+    pokedex.style.top = (container.offsetTop + container.offsetHeight - pokedex.offsetHeight - (container.offsetHeight * 0.10)) + "px";
+
+    kendrick.style.height = ((487 / container.offsetHeight) * 100) + "%";
+    kendrick.style.width = Math.round(kendrick.offsetHeight*0.559) + "px";
+
+
+    pokedexText.style.height = (1.82 * pokedex.offsetHeight / 3) + "px";
+    pokedexText.style.width = (1.1 * pokedex.offsetWidth / 3) + "px";
+    //need to make it all more responsive
+
+  }
   
 });
 
@@ -147,6 +172,9 @@ function writeEventListener(links, i) {
       }
     }
   });
+
+
+
 }
 
 /* ======================================================================
@@ -178,9 +206,6 @@ function launchPokeball() {
     container.appendChild(pokeball);
 
 
-
-
-    var ball = document.getElementById("ball");
     var maxX = container.clientWidth - container.clientWidth/4;
     var maxY = -container.clientHeight + container.clientHeight/4;
 
@@ -201,7 +226,6 @@ function launchPokeball() {
       y = 5 * Math.cos(x);
       
       if (y <= 0 && progress < 0.3){
-        console.log("first bounce");
         y = -3 * Math.cos(x); // y = ƒ(x)
         x = (1.5 * progress * maxX/gridSize) + (0.3 *maxX/gridSize);
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
@@ -209,7 +233,6 @@ function launchPokeball() {
         requestAnimationFrame(step);
       }
       else if (y >= 0 && progress < 0.8 && progress >= 0.24){
-        console.log("2nd bounce")
         y = 2 * Math.cos(x); // y = ƒ(x)
         x = (progress * maxX/gridSize) + (0.425 *maxX/gridSize);
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
@@ -217,10 +240,9 @@ function launchPokeball() {
         requestAnimationFrame(step);
       }
       else if (progress >= 0.4) {
-        console.log("end")
         pokeball.style.left = pokeball.offsetLeft;
         console.log(progress)
-        pokeball.style.bottom = (maxY/2 + 25) + "px";
+        pokeball.style.bottom = (maxY/2 - gridSize) + "px";
         openPokeball();
       }
       else {
@@ -228,7 +250,6 @@ function launchPokeball() {
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
         pokeball.style.bottom = maxY/2 + (gridSize * y) + "px";
         requestAnimationFrame(step);
-        console.log("out of phase")
       }
         
 
@@ -275,7 +296,7 @@ function showPokeKendrick() {
   var pokeball = document.getElementById("pokeball");
   container.appendChild(kendrick);
   kendrick.id = "kendrick";
-  kendrick.style.position = "relative";
+  kendrick.style.position = "absolute";
   kendrick.style.backgroundImage = "url('assets/images/kendrick.png')";
   kendrick.style.backgroundSize = "cover";
 
@@ -287,12 +308,12 @@ function showPokeKendrick() {
     kendrick.style.height = height + "px";
     console.log(pokeball.offsetTop/2)
     kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-    kendrick.style.bottom =  (pokeball.offsetBottom - kendrick.offsetHeight/2)+ "px";
+    kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/10)+ "px";
     if (height >= 487){
       clearInterval(kendrickGrower);
       kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-      kendrick.style.bottom =  (pokeball.offsetBottom - kendrick.offsetHeight/2)+ "px";
-      pokeball.style.backgroundPosition = "100 0"; 
+      kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/10)+ "px";
+      pokeball.style.display = "none"; 
       bringInPokedex(); 
     }
   }, 50);
@@ -309,14 +330,17 @@ function bringInPokedex() {
   pokedex.appendChild(pokedexText);
   container.appendChild(pokedex);
 
+  pokedexImage.id = "pokedexImage";
+  pokedexText.id = "pokedexText";
   pokedex.id = "pokedex";
-  pokedex.style.width = container.offsetWidth / 1.75;
-  pokedex.style.height = pokedex.offsetWidth * 0.75;
+  pokedex.style.width = (((container.offsetWidth / 1.75) / container.offsetWidth) * 100) + "%";
+  pokedex.style.height = (pokedex.offsetWidth * 0.75) + "px";
   pokedex.style.backgroundImage = "url('assets/images/pokedex.png')";
   pokedex.style.backgroundPosition = "-1px 0";
   pokedex.style.position = "absolute";
   pokedex.style.backgroundSize = "cover";
   pokedex.style.backgroundRepeat = "no-repeat"
+  //need to animate pokedex coming into screen
   pokedex.style.top = (container.offsetTop + container.offsetHeight - pokedex.offsetHeight - (container.offsetHeight * 0.10)) + "px";
   pokedex.style.left = "2%";
   animatePokedex();
@@ -324,35 +348,66 @@ function bringInPokedex() {
 
 function animatePokedex() {
   var pokedex = document.getElementById("pokedex");
-  var backgroundPosition = 5;
+  var positionRatio = parseFloat((pokedex.offsetWidth / 800).toFixed(2));
+  var backgroundPosition = 6 * positionRatio;
   // var changeBackground = setInterval(function(){
-    console.log(backgroundPosition >= -4000)
     // if (backgroundPosition >= -4000){
       pokedex.style.backgroundPosition = backgroundPosition + "px 0";
       // backgroundPosition -= 730;
       setTimeout(function(){
-        backgroundPosition -= 728;
+        backgroundPosition -= parseFloat((795 * positionRatio).toFixed(2));
         pokedex.style.backgroundPosition = backgroundPosition + "px 0";
         setTimeout(function(){
-          backgroundPosition -= 735;
+          backgroundPosition -= parseFloat((803 * positionRatio).toFixed(2));
           pokedex.style.backgroundPosition = backgroundPosition + "px 0";
           setTimeout(function(){
-            backgroundPosition -= 730;
+            backgroundPosition -= parseFloat((799 * positionRatio).toFixed(2));
             pokedex.style.backgroundPosition = backgroundPosition + "px 0";
             setTimeout(function(){
-              backgroundPosition -= 728;
+              backgroundPosition -= parseFloat((795 * positionRatio).toFixed(2));
               pokedex.style.backgroundPosition = backgroundPosition + "px 0";
               setTimeout(function(){
-                backgroundPosition -= 733;
+                backgroundPosition -= parseFloat((804 * positionRatio).toFixed(2));
                 pokedex.style.backgroundPosition = backgroundPosition + "px 0";
+                printPokedex();
               },75);
             },75);
           },75);
         },75);
       },75);
+
+
+
+  
+}
     // }
     // else {
     //   clearInterval(changeBackground);
     // }
   // },100);
+
+function printPokedex() {
+  var pokedex = document.getElementById("pokedex");
+  var pokedexImage = document.getElementById("pokedexImage");
+  var pokedexText = document.getElementById("pokedexText");
+
+  pokedexImage.style.height = (pokedex.offsetHeight / 2.25) + "px";
+  pokedexImage.style.width = (pokedex.offsetWidth / 3) + "px";
+  pokedexImage.style.left = "11%";
+  pokedexImage.style.top = "27.5%";
+  pokedexImage.style.backgroundPosition = "0 50px";
+  pokedexImage.innerHTML = "<h1>Kendrick Parks</h1>"
+
+  pokedexText.style.height = (1.725 * pokedex.offsetHeight / 3) + "px";
+  pokedexText.style.width = (1.055 * pokedex.offsetWidth / 3) + "px";
+  pokedexText.style.left = "60.5%";
+  pokedexText.style.top = "25.75%";
+
+  animateAboutMeText();
+}
+
+
+function animateAboutMeText() {
+  var pokedexText = document.getElementById("pokedexText");
+  pokedexText.innerHTML = "<h1>ABOUT ME</h1><p>My name is Kendrick Parks. I am a full stack web developer.  I also am a serial entrepreneur who loves start ups and creating start ups. &nbsp</p><p>I am very flexible and can create any style you are looking for.  I love working in teams and have strong leadership.  I loved to be challenged and I am always looking to learn and grow.  &nbsp</p><p>If you are looking for someone that will work long hours and have a blast doing so I am your guy.  Please enjoy my portfolio page and it's many game themes.  It gives you a glympse into my personality.</p>"
 }

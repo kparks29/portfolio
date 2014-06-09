@@ -230,7 +230,6 @@ video {
 }
 
 #aboutme #pokeball {
-  position: relative;
   height: 53px;
   width: 63px;
   background-image: url("../assets/images/pokeballrotation.png");
@@ -239,6 +238,26 @@ video {
   background-position: -693 0; 
   /* 0, -63, -126, -189, -252, -315, -378, -441, -504, -567, -630, -693 */ 
 }
+#aboutme #pokedexText, #aboutme #pokedexImage, #aboutme #pokeball, #aboutme #kendrick {
+  position: absolute;
+}
+
+#aboutme #pokedexImage {
+  background-image: url('../assets/images/kendrick.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#aboutme #pokedexText {
+  overflow: scroll;
+  margin: 20px;
+  background-color: transparent;
+}
+
+#aboutme #pokedexText h1, #aboutme #pokedexImage h1 {
+  text-align: center;
+}
+
 
 /* ===================================
               Contact Section
