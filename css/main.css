@@ -29,7 +29,7 @@ nav {
 }
 
 .active {
-  background-color: #666;
+  background-color: rgba(252, 160 ,68, 0.7);
 }
 
 #navbar-logo {
@@ -46,11 +46,11 @@ nav {
   position: relative;
   display: inline;
   padding: 15px 15px;
-  color: #aaa;
+  color: #fff;
 }
 
 #navbar-links ul li:hover {
-  color: #fff;
+  color: rgba(228, 92 ,16,1);
 }
 
 
@@ -73,7 +73,7 @@ video {
   font-size: 25px;
   position: relative;
   top: 75vh;
-  left: 45vw;
+  left: 42vw;
 }
 
 #chocobo {
@@ -115,7 +115,7 @@ video {
               Services Section
 =================================== */
 #whatido {
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(200,255,200,1);
 }
 #whatido #whatido-title h1{
   margin: 0;
@@ -143,18 +143,101 @@ video {
   width: 150px;
 }
 
+.lift h1 {
+  color: rgba(228, 92 ,16,1);
+}
+
+.lift img{
+  position: relative;
+  -webkit-animation: liftImage 0.25s;
+  -moz-animation: liftImage 0.25s;
+  animation: liftImage 0.25s;
+  top: -10px;
+}
+
+.drop img {
+  position: relative;
+  z-index: 0;
+  -webkit-animation: dropImage 0.25s;
+  -moz-animation: dropImage 0.25s;
+  animation: dropImage 0.25s;
+  top: 0;
+}
+
 /* ===================================
               Works Section
 =================================== */
 #myworks {
-  background-color: red;
+  background-color: rgba(50,50,50,1);
+  height: 115vh;
+}
+
+#myworks h1 {
+  text-align: center;
+  padding: 50px 0;
+  margin: 0;
+  font-size: 50px;
+  color: white;
+  text-shadow: 4px 4px 5px rgba(252, 160 ,68, 0.7);
+}
+
+#myworks > div {
+  border: 3px solid rgba(228, 92 ,16,1);
+  border-radius: 25px;
+  height: 200px;
+  width: 200px;
+  float: left;
+  margin: 20px;
+}
+
+#myworks div:first-of-type {
+  margin-left: 22%;
+}
+
+#myworks div:nth-of-type(3) {
+  margin-right: 22%;
+}
+#myworks div:nth-of-type(4) {
+  margin-left: 22%;
+}
+
+
+#myworks #peek {
+  background-image: url("../assets/images/peek.jpg");
+  background-size: cover;
+}
+
+#myworks #stylelust {
+  background-image: url("../assets/images/stylelust.jpg");
+  background-size: cover;
+}
+
+#myworks #mariotictactoe {
+  background-image: url("../assets/images/mariotictactoe.jpg");
+  background-size: 100% 100%;
+}
+
+#myworks #burgermonster {
+  background-image: url("../assets/images/burgermonster.jpg");
+  background-size: 100% 100%;
 }
 
 /* ===================================
               About Section
 =================================== */
 #aboutme {
-  background-color: blue;
+  background-color: rgba(255,255,255,1);
+}
+
+#aboutme #pokeball {
+  position: relative;
+  height: 53px;
+  width: 63px;
+  background-image: url("../assets/images/pokeballrotation.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: -693 0; 
+  /* 0, -63, -126, -189, -252, -315, -378, -441, -504, -567, -630, -693 */ 
 }
 
 /* ===================================
@@ -169,54 +252,28 @@ video {
 =================================== */
 
 /* Services Section */
-.lift img{
-  position: relative;
-  -webkit-animation: liftImage 0.25s;
-  -moz-animation: liftImage 0.25s;
-  animation: liftImage 0.25s;
-  top: -10px;
-}
-@-webkit-keyframes liftImage{
+@-webkit-keyframes liftImage {
   0% {top: 0;}
   100% {top: -10px;}
 }
-@-moz-keyframes liftImage{
+@-moz-keyframes liftImage {
   0% {top: 0;}
   100% {top: -10px;}
 }
-@keyframes liftImage{
+@keyframes liftImage {
   0% {top: 0;}
   100% {top: -10px;}
 }
 
-
-.drop img {
-  position: relative;
-  z-index: 0;
-  -webkit-animation: dropImage 0.25s;
-  -moz-animation: dropImage 0.25s;
-  animation: dropImage 0.25s;
-  top: 0;
-}
-
-@-webkit-keyframes dropImage
-{
+@-webkit-keyframes dropImage {
   0% {top: -10px;}
   100% {top: 0;}
 }
-
-@-moz-keyframes dropImage
-{
+@-moz-keyframes dropImage {
   0% {top: -10px;}
   100% {top: 0;}
 }
-
-@keyframes dropImage
-{
+@keyframes dropImage {
   0% {top: -10px;}
   100% {top: 0;}
-}
-
-.lift h1 {
-  color: blue;
 }
