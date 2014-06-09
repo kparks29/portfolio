@@ -15,6 +15,11 @@ font-family: nintendo;
 src: url('../assets/fonts/emulogic.ttf');
 }
 
+@font-face {
+font-family: pokemon;
+src: url('../assets/fonts/pokemon.ttf');
+}
+
 /* ===================================
               Navbar
 =================================== */
@@ -58,9 +63,20 @@ nav {
               Home Section
 =================================== */
 #home {
-  background-image: url("http://i.imgur.com/DcnYPgt.png");
+  /*background-image: url("http://i.imgur.com/DcnYPgt.png");
+  background-size: cover;
+  */
+  background-color: rgba(0,0,0,0.3);
+}
+
+#background {
+  background-image: url("../assets/images/background.png");
   background-size: cover;
   background-color: rgba(0,0,0,0.3);
+  position: absolute;
+  z-index: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 video {
@@ -226,7 +242,7 @@ video {
               About Section
 =================================== */
 #aboutme {
-  background-color: rgba(255,255,255,1);
+  background-color: rgba(255,255,255, 1);
 }
 
 #aboutme #pokeball {
@@ -256,6 +272,10 @@ video {
 
 #aboutme #pokedexText h1, #aboutme #pokedexImage h1 {
   text-align: center;
+  font-size: 30px;
+  font-family: pokemon;
+  color: #ffff00;
+  text-shadow: -5px 0 #4682B4, 0 5px #4682B4, 5px 0 #4682B4, 0 -5px #4682B4;
 }
 
 

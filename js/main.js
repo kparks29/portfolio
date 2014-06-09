@@ -99,29 +99,6 @@ Chocobo Animation
   }
 
 
-  //resize about me section here
-  window.onresize = function() {
-    var pokedex = document.getElementById("pokedex");
-    var kendrick = document.getElementById("kendrick");
-    var container = document.getElementById("aboutme");
-    var pokedexText = document.getElementById("pokedexText");
-    var height;
-    var positionRatio = parseFloat((pokedex.offsetWidth / 800).toFixed(2));
-
-    pokedex.style.width = (((container.offsetWidth / 1.75) / container.offsetWidth) * 100) + "%";
-    pokedex.style.height = (pokedex.offsetWidth * 0.75) + "px";
-    pokedex.style.backgroundPosition = (- (3655 / 4000) * pokedex.offsetWidth * 5.45) + "px 0";
-    pokedex.style.top = (container.offsetTop + container.offsetHeight - pokedex.offsetHeight - (container.offsetHeight * 0.10)) + "px";
-
-    kendrick.style.height = ((487 / container.offsetHeight) * 100) + "%";
-    kendrick.style.width = Math.round(kendrick.offsetHeight*0.559) + "px";
-
-
-    pokedexText.style.height = (1.82 * pokedex.offsetHeight / 3) + "px";
-    pokedexText.style.width = (1.1 * pokedex.offsetWidth / 3) + "px";
-    //need to make it all more responsive
-
-  }
   
 });
 
@@ -165,9 +142,14 @@ function writeEventListener(links, i) {
       else if (document.getElementById("home").offsetHeight - navBarHeight >= window.pageYOffset && links.length - length >= 0 && i == links.length - length++){
         removeClassActive(links);
       }
+      if (window.pageYOffset < document.getElementById("aboutme").offsetTop) {
+        var background = document.getElementById("background");
+        var home = document.getElementById("home");
+        background.style.top = window.pageYOffset + "px";
+      }
 
       //start pokemon sequence
-      if (window.pageYOffset >= document.getElementById("aboutme").offsetTop - document.getElementById("aboutme").offsetHeight / 4){
+      if (window.pageYOffset >= document.getElementById("aboutme").offsetTop - document.getElementById("aboutme").offsetHeight / 10){
         launchPokeball();
       }
     }
@@ -199,7 +181,6 @@ function changeActive(links, i){
 function launchPokeball() {
   if (!ranPokeball) {
     ranPokeball = true;
-    console.log("launchPokeball");
     var container = document.getElementById("aboutme");
     var pokeball = document.createElement("div");
     pokeball.id = "pokeball";
@@ -224,33 +205,33 @@ function launchPokeball() {
       
       x = progress * maxX/gridSize; // x = ƒ(t)
       y = 5 * Math.cos(x);
-      
+      console.log(pokeball.offsetTop + (2* container.offsetHeight/3));
       if (y <= 0 && progress < 0.3){
         y = -3 * Math.cos(x); // y = ƒ(x)
         x = (1.5 * progress * maxX/gridSize) + (0.3 *maxX/gridSize);
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
-        pokeball.style.bottom = maxY/2 + (gridSize * y) + "px";
+        pokeball.style.bottom = maxY/2 + (gridSize * y) - container.offsetHeight/2.5 + "px";
         requestAnimationFrame(step);
       }
       else if (y >= 0 && progress < 0.8 && progress >= 0.24){
         y = 2 * Math.cos(x); // y = ƒ(x)
         x = (progress * maxX/gridSize) + (0.425 *maxX/gridSize);
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
-        pokeball.style.bottom = maxY/2 + (gridSize * y) + "px";
+        pokeball.style.bottom = maxY/2 + (gridSize * y) - container.offsetHeight/2.5 + "px";
         requestAnimationFrame(step);
       }
       else if (progress >= 0.4) {
         pokeball.style.left = pokeball.offsetLeft;
-        console.log(progress)
-        pokeball.style.bottom = (maxY/2 - gridSize) + "px";
+        pokeball.style.bottom = (maxY/2 - gridSize) - container.offsetHeight/2.5 + "px";
         openPokeball();
       }
       else {
         x = 5 * progress * maxX/gridSize;
         pokeball.style.left = Math.min(maxX, gridSize * x) + "px";
-        pokeball.style.bottom = maxY/2 + (gridSize * y) + "px";
+        pokeball.style.bottom = maxY/2 + (gridSize * y) - container.offsetHeight/2.5 + "px";
         requestAnimationFrame(step);
       }
+
         
 
 
@@ -266,7 +247,6 @@ function launchPokeball() {
 
 function openPokeball() {
   clearInterval(pokeballSpin);
-  console.log("stop spinning")
   showPokeKendrick()
   var pokeball = document.getElementById("pokeball");
   pokeball.style.height = "125px";
@@ -276,7 +256,6 @@ function openPokeball() {
 }
 
 function startPokeballSpin() {
-  console.log("start spin")
   var leftPosition = 0;
   pokeballSpin = setInterval(function() {
     if (leftPosition < 0) {
@@ -285,7 +264,6 @@ function startPokeballSpin() {
     else {
       leftPosition = -693;
     }
-    console.log("spinning")
     pokeball.style.backgroundPosition = leftPosition + "px 0";
   }, 35);
 }
@@ -306,13 +284,12 @@ function showPokeKendrick() {
     height += 25;
     kendrick.style.width = Math.round(height*0.559) + "px";
     kendrick.style.height = height + "px";
-    console.log(pokeball.offsetTop/2)
     kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-    kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/10)+ "px";
+    kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.25)+ "px";
     if (height >= 487){
       clearInterval(kendrickGrower);
       kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-      kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/10)+ "px";
+      kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.25)+ "px";
       pokeball.style.display = "none"; 
       bringInPokedex(); 
     }
@@ -404,10 +381,39 @@ function printPokedex() {
   pokedexText.style.top = "25.75%";
 
   animateAboutMeText();
+  loadResize();
 }
+
 
 
 function animateAboutMeText() {
   var pokedexText = document.getElementById("pokedexText");
   pokedexText.innerHTML = "<h1>ABOUT ME</h1><p>My name is Kendrick Parks. I am a full stack web developer.  I also am a serial entrepreneur who loves start ups and creating start ups. &nbsp</p><p>I am very flexible and can create any style you are looking for.  I love working in teams and have strong leadership.  I loved to be challenged and I am always looking to learn and grow.  &nbsp</p><p>If you are looking for someone that will work long hours and have a blast doing so I am your guy.  Please enjoy my portfolio page and it's many game themes.  It gives you a glympse into my personality.</p>"
+}
+
+
+function loadResize() {
+  //resize about me section here
+  window.onresize = function() {
+    var pokedex = document.getElementById("pokedex");
+    var kendrick = document.getElementById("kendrick");
+    var container = document.getElementById("aboutme");
+    var pokedexText = document.getElementById("pokedexText");
+    var height;
+    var positionRatio = parseFloat((pokedex.offsetWidth / 800).toFixed(2));
+
+    pokedex.style.width = (((container.offsetWidth / 1.75) / container.offsetWidth) * 100) + "%";
+    pokedex.style.height = (pokedex.offsetWidth * 0.75) + "px";
+    pokedex.style.backgroundPosition = (- (3655 / 4000) * pokedex.offsetWidth * 5.45) + "px 0";
+    pokedex.style.top = (container.offsetTop + container.offsetHeight - pokedex.offsetHeight - (container.offsetHeight * 0.10)) + "px";
+
+    kendrick.style.height = ((487 / container.offsetHeight) * 100) + "%";
+    kendrick.style.width = Math.round(kendrick.offsetHeight*0.559) + "px";
+
+
+    pokedexText.style.height = (1.82 * pokedex.offsetHeight / 3) + "px";
+    pokedexText.style.width = (1.1 * pokedex.offsetWidth / 3) + "px";
+    //need to make it all more responsive
+
+  }
 }
