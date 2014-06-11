@@ -127,58 +127,162 @@ video {
   top: 55vh;
 }
 
+
+
+/* ===================================
+              About Section
+=================================== */
+#aboutme {
+  background-color: #191970;
+}
+
+#aboutme #pokeball {
+  height: 53px;
+  width: 63px;
+  background-image: url("../assets/images/pokeballrotation.png");
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: -693 0; 
+  /* 0, -63, -126, -189, -252, -315, -378, -441, -504, -567, -630, -693 */ 
+}
+#aboutme #pokedexText, #aboutme #pokedexImage, #aboutme #pokeball, #aboutme #kendrick {
+  position: absolute;
+}
+
+#aboutme #pokedexImage {
+  background-image: url('../assets/images/kendrick.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#aboutme #pokedexText {
+  overflow: scroll;
+  margin: 20px;
+  background-color: transparent;
+}
+
+#aboutme #pokedexText h1, #aboutme #pokedexImage h1 {
+  text-align: center;
+  font-size: 30px;
+  font-family: pokemon;
+  color: #ffff00;
+  text-shadow: -5px 0 #4682B4, 0 5px #4682B4, 5px 0 #4682B4, 0 -5px #4682B4;
+}
+
+
+
+
 /* ===================================
               Services Section
 =================================== */
 #whatido {
-  background-color: rgba(200,255,200,1);
+  background-color: rgba(0,0,0,1);
 }
-#whatido #whatido-title h1{
-  margin: 0;
-  padding: 0.5em;
-  text-align: center;
-  font-size: 5em;
+
+#whatido-title {
+  position: relative;
+  top: -3%;
+  left: 0;
+  width: 100%;
+  height: 12%;
+  border-bottom: 2px solid #0000ff;
+  background: -webkit-linear-gradient(#191970, #00008B);
+  background: -moz-linear-gradient(#191970, #00008B);
+  background: linear-gradient(#191970, #00008B);
 }
-#whatido #whatido-title p {
-  text-align: center;
-  font-size: 1.5em;
-  margin-top: -10px;
-}
-#whatido .services {
-  margin-left: 4%;
-  text-align: center;
-  margin-top: 25px; 
+
+#whatido #whatido-title-left {
   float: left;
-  height: 50%;
-  width: 20%;
+  margin: 0.25% 0;
 }
 
-#whatido .services img {
-  margin: 25px;
-  height: 150px;
-  width: 150px;
+#whatido #whatido-title-left h1{
+  vertical-align: middle;
+  padding: 0.25% 10%;
+  text-align: center;
+  color: white;
+  background-color: #0000ff;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
-.lift h1 {
-  color: rgba(228, 92 ,16,1);
+#whatido #whatido-title-right {
+  -webkit-border-image: 
+    -webkit-linear-gradient(left, transparent, #FF8C00) 100% 2 10 stretch;
+  -moz-border-image: 
+    -moz-linear-gradient(left, transparent, #FF8C00) 100% 2 10 stretch;
+  border-image: 
+    linear-gradient(left, transparent, #FF8C00) 100% 2 10 stretch;
+
+  border-width: 0 0 2px 0;
+  width: 40%;
+  text-align: right;
+  float: right;
+  margin-top: 4%;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
 }
 
-.lift img{
+#whatido #whatido-title-right h2 {
+  margin: 0;
+  padding: 0 2%;
+  color: #FFFF00;
+}
+
+#whatido #whatido-lists ul {
+  color: white;
+  display: none;
+}
+
+#whatido #whatido-lists > ul {
+  display: block;
+}
+
+#whatido #whatido-lists ul li {
+  list-style-type: none;
+  width: 30%;
+  margin: 10px 0 12px 0; 
+  padding: 4px 0 4px 20px;
+  border-top: 2px solid #A9A9A9;
+  border-left: 2px solid #A9A9A9;
+  border-top-left-radius: 15px 15px;
+  border-bottom-right-radius: 15px 15px;
+  font-size: 24px;
+} 
+
+#whatido #whatido-lists ul li:active, #whatido #whatido-lists ul li:hover {
+  background: linear-gradient(black, #8B0000, #ff0000);
+  background: -webkit-linear-gradient(black, #8B0000, #ff0000);
+  background: -moz-linear-gradient(black, #8B0000, #ff0000);
+  border: 2px solid #ff0000;
+} 
+
+#whatido-mid-section {
   position: relative;
-  -webkit-animation: liftImage 0.25s;
-  -moz-animation: liftImage 0.25s;
-  animation: liftImage 0.25s;
-  top: -10px;
+  top: -2%;
+  width: 100%;
+  height: 70%;
+  background: black;
 }
 
-.drop img {
-  position: relative;
-  z-index: 0;
-  -webkit-animation: dropImage 0.25s;
-  -moz-animation: dropImage 0.25s;
-  animation: dropImage 0.25s;
+#whatido-lists {
+  width: 66%;
+  height: 90%;
+  position: absolute;
   top: 0;
+  left: 1%;
 }
+
+#whatido-character {
+  width: 33%;
+  height: 90%;
+  position: absolute;
+  top: 0;
+  right: 1%;
+  border: 1px solid blue;
+}
+
 
 /* ===================================
               Works Section
@@ -238,46 +342,6 @@ video {
   background-size: 100% 100%;
 }
 
-/* ===================================
-              About Section
-=================================== */
-#aboutme {
-  background-color: rgba(255,255,255, 1);
-}
-
-#aboutme #pokeball {
-  height: 53px;
-  width: 63px;
-  background-image: url("../assets/images/pokeballrotation.png");
-  background-size: auto;
-  background-repeat: no-repeat;
-  background-position: -693 0; 
-  /* 0, -63, -126, -189, -252, -315, -378, -441, -504, -567, -630, -693 */ 
-}
-#aboutme #pokedexText, #aboutme #pokedexImage, #aboutme #pokeball, #aboutme #kendrick {
-  position: absolute;
-}
-
-#aboutme #pokedexImage {
-  background-image: url('../assets/images/kendrick.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#aboutme #pokedexText {
-  overflow: scroll;
-  margin: 20px;
-  background-color: transparent;
-}
-
-#aboutme #pokedexText h1, #aboutme #pokedexImage h1 {
-  text-align: center;
-  font-size: 30px;
-  font-family: pokemon;
-  color: #ffff00;
-  text-shadow: -5px 0 #4682B4, 0 5px #4682B4, 5px 0 #4682B4, 0 -5px #4682B4;
-}
-
 
 /* ===================================
               Contact Section
@@ -290,29 +354,3 @@ video {
               Animations
 =================================== */
 
-/* Services Section */
-@-webkit-keyframes liftImage {
-  0% {top: 0;}
-  100% {top: -10px;}
-}
-@-moz-keyframes liftImage {
-  0% {top: 0;}
-  100% {top: -10px;}
-}
-@keyframes liftImage {
-  0% {top: 0;}
-  100% {top: -10px;}
-}
-
-@-webkit-keyframes dropImage {
-  0% {top: -10px;}
-  100% {top: 0;}
-}
-@-moz-keyframes dropImage {
-  0% {top: -10px;}
-  100% {top: 0;}
-}
-@keyframes dropImage {
-  0% {top: -10px;}
-  100% {top: 0;}
-}
