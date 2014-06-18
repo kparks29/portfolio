@@ -3,6 +3,12 @@
 =================================== */
 body {
   font-family: 'Fresca', sans-serif;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #home, #whatido, #myworks, #aboutme, #contact {
@@ -11,13 +17,28 @@ body {
 }
 
 @font-face {
-font-family: nintendo;
-src: url('../assets/fonts/emulogic.ttf');
+  font-family: nintendo;
+  src: url('../assets/fonts/emulogic.ttf');
 }
 
 @font-face {
-font-family: pokemon;
-src: url('../assets/fonts/pokemon.ttf');
+  font-family: pokemon;
+  src: url('../assets/fonts/pokemon.ttf');
+}
+
+@font-face {
+  font-family: khMenuTitle;
+  src: url('../assets/fonts/khmenu.ttf');
+}
+
+@font-face {
+  font-family: khMenuMain;
+  src: url('../assets/fonts/khmenumain.ttf');
+}
+
+@font-face {
+  font-family: kingdomHearts;
+  src: url('../assets/fonts/kingdomhearts.ttf');
 }
 
 /* ===================================
@@ -177,7 +198,11 @@ video {
 =================================== */
 #whatido {
   background-color: rgba(0,0,0,1);
+  font-family: khMenuMain;
+  font-size: 14px;
+  color: white;
 }
+
 
 #whatido-title {
   position: relative;
@@ -198,12 +223,13 @@ video {
 
 #whatido #whatido-title-left h1{
   vertical-align: middle;
-  padding: 0.25% 10%;
+  padding: 2% 25% 1% 10%;
   text-align: center;
   color: white;
   background-color: #0000ff;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
+  font-family: khMenuTitle;
 }
 
 #whatido #whatido-title-right {
@@ -226,38 +252,34 @@ video {
 
 #whatido #whatido-title-right h2 {
   margin: 0;
-  padding: 0 2%;
+  padding: 2% 2%;
   color: #FFFF00;
 }
 
-#whatido #whatido-lists ul {
-  color: white;
-  display: none;
-}
-
-#whatido #whatido-lists > ul {
-  display: block;
-}
-
-#whatido #whatido-lists ul li {
+#whatido .whatido-lists ul li {
   list-style-type: none;
-  width: 30%;
+  width: 70%;
   margin: 10px 0 12px 0; 
   padding: 4px 0 4px 20px;
-  background: black;
-  border-top: 2px solid #A9A9A9;
-  border-left: 2px solid #A9A9A9;
   border-top-left-radius: 15px 15px;
   border-bottom-right-radius: 15px 15px;
   font-size: 24px;
 } 
 
-#whatido #whatido-lists ul li:active, #whatido #whatido-lists ul li:hover {
+.black-list {
+  background: black;
+  border-top: 2px solid #A9A9A9;
+  border-left: 2px solid #A9A9A9;
+}
+
+#whatido .whatido-lists ul li:active, #whatido .whatido-lists ul li:hover, .red-list, #whatido-subCategory ul li:hover, #whatido-subCategory ul li:active {
   background: linear-gradient(black, #8B0000, #ff0000);
   background: -webkit-linear-gradient(black, #8B0000, #ff0000);
   background: -moz-linear-gradient(black, #8B0000, #ff0000);
   border: 2px solid #ff0000;
-} 
+}
+
+
 
 #whatido-mid-section {
   position: relative;
@@ -270,13 +292,103 @@ video {
   background: -moz-linear-gradient(left, #00008B 2%, #191970 4%, #0000CD 8%, #00008B 12%, black 16%, black 100%);
 }
 
-#whatido-lists {
-  width: 65%;
+.whatido-lists {
+  width: 32%;
   height: 91%;
   position: absolute;
   top: 0;
   left: 1%;
 }
+
+#whatido-subCategory ul {
+  display: none;
+  padding-top: 10%;
+}
+
+
+.show-subCategory {
+  display: block;
+}
+
+#whatido-subCategory ul li {
+  list-style-type: none;
+  width: 90%;
+  margin: 0px 0 12px 0; 
+  padding: 4px 0 4px 20px;
+  background: #00008B;
+  border-top: 2px solid #4169E1;
+  border-left: 2px solid #4169E1;
+  border-top-left-radius: 15px 15px;
+  border-bottom-right-radius: 15px 15px;
+  border-top-right-radius: 15px 15px;
+  font-size: 20px;
+}
+#whatido-subCategory ul li span{
+  font-family: kingdomHearts;
+  font-size: 60px;
+  line-height: 24px;
+  position: relative;
+  top: 10px;
+  right: 0;
+}
+
+#whatido-subCategory .key {
+  color: #FF8C00;
+  position: relative;
+  left: 0;
+  top: 15px;
+}
+
+#whatido-subCategory ul li p{
+  font-size: 14px;
+  text-align: right;
+  float: right;
+  margin: 0;
+  padding: 10px 10px 0 0;
+  vertical-align: top;
+  color: yellow;
+}
+
+.kh-blue-fade {
+  width: 32%;
+  height: 90%;
+  position: absolute;
+  top: 2%;
+  right: 34%;
+  border-top-left-radius: 15px 15px;
+  border-bottom-left-radius: 15px 15px;
+  -webkit-border-image: 
+    -webkit-linear-gradient(right, transparent, blue 60%) 100% 1 5 stretch;
+  -moz-border-image: 
+    -moz-linear-gradient(right, transparent, blue 60%) 100% 1 5 stretch;
+  border-image: 
+    linear-gradient(right, transparent, blue 60%) 100% 1 5 stretch;
+}
+
+.kh-blue-fade > div {
+  height: calc(100% + 2px);
+  width: calc(100% + 2px);
+  position: absolute;
+  top: -2px;
+  left: -3px;
+  border-left: 3px solid blue;
+  overflow: scroll;
+}
+
+#whatido-character > h3, #whatido-subCategory > h3 {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 30%;
+  margin: 0;
+  padding: 4px 80px 4px 10px;
+  background: blue;
+  border-bottom: 2px solid blue;
+  border-right: 2px solid blue;
+  border-bottom-right-radius: 15px 15px;
+  font-size: 20px;
+}
+
 
 #whatido-character {
   width: 32%;
@@ -292,30 +404,39 @@ video {
     -moz-linear-gradient(right, transparent, blue 60%) 100% 1 5 stretch;
   border-image: 
     linear-gradient(right, transparent, blue 60%) 100% 1 5 stretch;
-   
 }
 
-#whatido-character > div {
-  height: calc(100% + 2px);
-  width: calc(100% + 2px);
-  position: absolute;
-  top: -2px;
-  left: -3px;
-  border-left: 3px solid blue;
+#whatido-character div {
+  width: 50%;
 }
-#whatido-character > h3 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30%;
-  margin: 0;
-  padding: 4px 80px 4px 10px;
-  background: blue;
-  border-bottom: 2px solid blue;
-  border-right: 2px solid blue;
-  border-bottom-right-radius: 15px 15px;
-  font-size: 20px;
+
+#whatido-character div p {
+  margin-left: 10%;
+  border-bottom: 2px solid;
+}
+
+#whatido-character div p span {
+  float: right;
+}
+
+#whatido-character div p:nth-child(1) {
+  margin-top: 25%;
+  color: yellow;
+}
+#whatido-character div p:nth-child(2) {
+  color: green;
+}
+#whatido-character div p:nth-child(3) {
+  color: #FF8C00;
+}
+#whatido-character div p:nth-child(4) {
   color: white;
+  padding-bottom: 10%;
+}
+
+#whatido-character div p:nth-child(4) span {
+  position: relative;
+  bottom: -1.5em;
 }
 
 #whatido #whatido-footer {
@@ -331,6 +452,40 @@ video {
 
 }
 
+#whatido #lines-of-code {
+  border-right: 2px inset #0000ff;
+  height: 100%;
+  width: 20%;
+  background: transparent;
+  float: left;
+  font-family: khMenuTitle;
+}
+
+
+#whatido #lines-of-code div:nth-child(1) {
+  color: #FFA500;
+  float: left;
+}
+#whatido #lines-of-code div:nth-child(2) {
+  color: #FFFF00;
+  float: right;
+}
+#whatido #lines-of-code div:nth-child(3) {
+  color: #87CEFA;
+  float: left;
+}
+#whatido #lines-of-code div:nth-child(4) {
+  color: #00CED1;
+  float: right;
+}
+
+#whatido #subcategory-description {
+  border-left: 4px groove #0000ff;
+  height: 100%;
+  width: 79%;
+  background: transparent;
+  float: left;
+}
 
 
 /* ===================================

@@ -205,7 +205,6 @@ function launchPokeball() {
       
       x = progress * maxX/gridSize; // x = ƒ(t)
       y = 5 * Math.cos(x);
-      console.log(pokeball.offsetTop + (2* container.offsetHeight/3));
       if (y <= 0 && progress < 0.3){
         y = -3 * Math.cos(x); // y = ƒ(x)
         x = (1.5 * progress * maxX/gridSize) + (0.3 *maxX/gridSize);
@@ -415,5 +414,28 @@ function loadResize() {
     pokedexText.style.width = (1.1 * pokedex.offsetWidth / 3) + "px";
     //need to make it all more responsive
 
+  }
+  document.getElementsByClassName("whatido-lists")[0].children[0].children[0].addEventListener("click", function() {hideSubcategory(); showSubcategory(0);});
+ document.getElementsByClassName("whatido-lists")[0].children[0].children[1].addEventListener("click", function() {hideSubcategory(); showSubcategory(1);});
+ document.getElementsByClassName("whatido-lists")[0].children[0].children[2].addEventListener("click", function() {hideSubcategory(); showSubcategory(2);});
+ document.getElementsByClassName("whatido-lists")[0].children[0].children[3].addEventListener("click", function() {hideSubcategory(); showSubcategory(3);});
+  
+  
+
+  function showSubcategory (index) {
+    document.getElementById("whatido-subCategory").children[0].children[index].style.display = "block";
+    $(document.getElementsByClassName("whatido-lists")[0].children[0].children[index]).addClass("red-list");
+    $(document.getElementsByClassName("whatido-lists")[0].children[0].children[index]).removeClass("black-list");
+  }
+
+  function hideSubcategory () {
+    var sub = document.getElementById("whatido-subCategory");
+    for (var i=0; i<sub.children[0].childElementCount; i++) {
+      sub.children[0].children[i].style.display = "none";
+      $(sub.children[0].children[i]).removeClass("red-list");
+      $(document.getElementsByClassName("whatido-lists")[0].children[0].children[i]).removeClass("red-list")
+      $(document.getElementsByClassName("whatido-lists")[0].children[0].children[i]).addClass("black-list")
+      
+    }
   }
 }
