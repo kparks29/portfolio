@@ -53,7 +53,7 @@ body {
 nav {
   margin-bottom: 0;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   height: 50px;
   top: 0;
   z-index: 10;
@@ -498,8 +498,9 @@ video {
               Works Section
 =================================== */
 #myworks {
-  background-color: #444;
-  height: 115vh;
+  background-image: url("../assets/images/projectbackground.jpg");
+  background-size: cover;
+  height: 100%;
 }
 
 #myworks canvas {
@@ -514,11 +515,19 @@ video {
   font-size: 50px;
   color: white;
   text-shadow: 4px 4px 5px rgba(252, 160 ,68, 0.7);
+  position: relative;
+  z-index: 7;
 }
 
-#myworks > div {
-  
-  border: 5px solid blue;
+#myworks h3, #myworks h5 {
+  text-align: center;
+  color: white;
+  margin: 0 auto;
+  margin-top: 40%;
+  width: 80%;
+}
+
+#myworks > div, #myworks .coverTile {
   border-radius: 75%;
   height: 300px;
   width: 175px;
@@ -526,80 +535,67 @@ video {
   margin: 20px;
 }
 
-#myworks .projectTile {
+#myworks .projectTile, #myworks .coverTile {
   position: absolute;
   z-index: 5;
+}
+
+#myworks .projectTile {
   visibility: hidden;
 }
 
-#myworks h1 {
-  position: relative;
-  z-index: 5;
+#myworks .coverTile {
+  visibility: visible;
+  background-color: #444;
 }
 
-#myworks #peek {
-  left: 2%;
-}
-
-#myworks #mariotictactoe {
-  left: 17%;
-}
-#myworks #icebucketblast, #myworks #stylelust, #myworks #burgermonster, #myworks #electricchair, #myworks #burgerboy {
+#myworks #icebucketblast, #myworks #mariotictactoe, #myworks #burgermonster, #myworks #electricchair, #myworks #burgerboy {
   right: 10%;
 }
-
-
-
 
 #myworks #peek {
   background-image: url("../assets/images/peek.jpg");
   background-size: cover;
+  left: 17%;
 }
 
 #myworks #stylelust {
   background-image: url("../assets/images/stylelust.jpg");
   background-size: cover;
+  left: 2%;
 }
 
 #myworks #mariotictactoe {
   background-image: url("../assets/images/mariotictactoe.jpg");
   background-size: 100% 100%;
+  left: 20%;
 }
 
 #myworks #burgermonster {
   background-image: url("../assets/images/burgermonster.jpg");
   background-size: 100% 100%;
+  left: 40%;
 }
 
 #myworks #burgerboy {
   background-image: url("../assets/images/burgerboy.png");
   background-size: 150% 100%;
   background-position: -50 0;
+  left: 60%;
 }
 
 #myworks #electricchair {
   background-image: url("../assets/images/vrelectricchair.png");
   background-size: 100% 100%;
+  left: 80%;
 }
 
 #myworks #icebucketblast {
   background-image: url("../assets/images/iceblast.png");
   background-size: 100% 100%;
+  left: 63%;
 }
 
-/*#myworks #peek:hover, #myworks #stylelust:hover, #myworks #mariotictactoe:hover, #myworks #burgermonster:hover, #myworks #burgerboy:hover, #myworks #electricchair:hover, #myworks #icebucketblast:hover {
-  background-image: none;
-} 
-
-#myworks .projectTile h3, #myworks .projectTile h5 {
-  visibility: visible;
-  text-align: center;
-}
-
-#myworks .projectTile:hover h3, #myworks .projectTile:hover h5 {
-  visibility: visible;
-  color: white;
-}*/
 
 #myworks .portal {
   position: absolute;
@@ -616,7 +612,6 @@ video {
 #myworks #portal3 {
   right: 10%;
 }
-
 
 
 /* ===================================

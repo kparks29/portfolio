@@ -6,15 +6,16 @@ function init() {
     width = myWorks.offsetWidth/2, 
     height = myWorks.offsetHeight / 1.5;
     scene = new THREE.Scene();
-    renderer = new THREE.WebGLRenderer({antialias: true});
+    renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
     renderer.setSize(width, height);
+    renderer.setClearColor( 0x000000, 0 );
     //add renderer to page
     myWorks.appendChild(renderer.domElement);
     var child = myWorks.getElementsByTagName("canvas")[0];
-    child.style.top = myWorks.offsetTop + 50 + "px"
+    child.style.top = "calc(" + myWorks.offsetTop + "px - " + "3%)";
     child.style.left = "25%";
 
-    camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 10000);
+    camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 10000);
     clock = new THREE.Clock();
 
     /*************************************
@@ -35,7 +36,7 @@ function init() {
     var cubeMaterial = new THREE.MeshFaceMaterial(materials);
     //define the cube
     cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-
+    
     /*************************************
             Skybox
     *************************************/
@@ -66,7 +67,7 @@ function init() {
   camera.lookAt(cube.position);
 
     scene.add(cube);
-    scene.add(skybox);
+    //scene.add(skybox);
     scene.add(pointLight);
     scene.add(pointLight2);
     scene.add(camera);

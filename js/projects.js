@@ -3,30 +3,42 @@ $(document).ready(function(){
  
   
   var title = document.getElementById("myworksTitle");
-  var project1 = document.getElementById("peek");
-  var project2 = document.getElementById("mariotictactoe");
-  var portal1 = document.getElementById("portal1");
-  var portal2 = document.getElementById("portal2");
-
-  project1.style.top = title.offsetTop + "px";
-  project2.style.top = (title.offsetTop + title.offsetHeight + 50) + "px";
-  portal1.style.top = (project1.offsetTop - 20) + "px";
-  portal2.style.top = (project2.offsetTop - 20) + "px";
-
+  var projects = document.getElementsByClassName("projectTile");
   var portals = document.getElementsByClassName("portal");
+  var covers = document.getElementsByClassName("coverTile");
+
+  projects[0].style.top = title.offsetTop + "px";
+  projects[1].style.top = (title.offsetTop + title.offsetHeight + 50) + "px";
+  projects[2].style.top = (title.offsetTop + projects[2].offsetHeight + 20) + "px";
+  projects[3].style.top = (title.offsetTop + projects[2].offsetHeight + 20) + "px";
+  projects[4].style.top = (title.offsetTop + projects[2].offsetHeight + 20) + "px";
+  projects[5].style.top = (title.offsetTop + title.offsetHeight + 50) + "px";
+  projects[6].style.top = title.offsetTop + "px";
+  for (var i=0; i<projects.length; i++) {
+    console.log(i)
+    portals[i].style.top = (projects[i].offsetTop - 20) + "px";
+    portals[i].style.left = (projects[i].offsetLeft - 30) + "px";
+    covers[i].style.top = (projects[i].offsetTop - 20) + "px";
+    covers[i].style.left = (projects[i].offsetLeft - 20) + "px";
+  }
+  
+  
+  
 
   for (var i=0; i<portals.length; i++){
     portalEventListeners(i, portals);
   }
 
-  function portalEventListeners(i) {
+  function portalEventListeners(i, portals) {
     var projects = document.getElementsByClassName("projectTile");
+    var covers = document.getElementsByClassName("coverTile");
     portals[i].addEventListener("mouseover", function() {
       projects[i].style.visibility = "visible";
-      console.log(i)
+      covers[i].style.visibility = "hidden";
     });
     portals[i].addEventListener("mouseout", function() {
       projects[i].style.visibility = "hidden";
+      covers[i].style.visibility = "visible";
     });
   }
 
