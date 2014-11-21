@@ -29,6 +29,8 @@ Welcome Text Animation and Sound
     }
   }, 50); 
 
+  
+
 
 /* ======================================================================
 Chocobo Animation
@@ -155,9 +157,12 @@ function writeEventListener(links, i) {
     }
   });
 
+  
+
 
 
 }
+
 
 /* ======================================================================
 Remove active class from all the links
@@ -438,4 +443,6 @@ function loadResize() {
       
     }
   }
+
+  
 }

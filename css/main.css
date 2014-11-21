@@ -56,7 +56,7 @@ nav {
   width: 100vw;
   height: 50px;
   top: 0;
-  z-index: 5;
+  z-index: 10;
   background-color: rgba(0,0,0,1);
 }
 
@@ -498,8 +498,13 @@ video {
               Works Section
 =================================== */
 #myworks {
-  background-color: rgba(50,50,50,1);
+  background-color: #444;
   height: 115vh;
+}
+
+#myworks canvas {
+  position: absolute;
+  z-index: 1;
 }
 
 #myworks h1 {
@@ -512,24 +517,38 @@ video {
 }
 
 #myworks > div {
-  border: 3px solid rgba(228, 92 ,16,1);
-  border-radius: 25px;
-  height: 200px;
-  width: 200px;
+  
+  border: 5px solid blue;
+  border-radius: 75%;
+  height: 300px;
+  width: 175px;
   float: left;
   margin: 20px;
 }
 
-#myworks div:first-of-type {
-  margin-left: 22%;
+#myworks .projectTile {
+  position: absolute;
+  z-index: 5;
+  visibility: hidden;
 }
 
-#myworks div:nth-of-type(3) {
-  margin-right: 22%;
+#myworks h1 {
+  position: relative;
+  z-index: 5;
 }
-#myworks div:nth-of-type(4) {
-  margin-left: 22%;
+
+#myworks #peek {
+  left: 2%;
 }
+
+#myworks #mariotictactoe {
+  left: 17%;
+}
+#myworks #icebucketblast, #myworks #stylelust, #myworks #burgermonster, #myworks #electricchair, #myworks #burgerboy {
+  right: 10%;
+}
+
+
 
 
 #myworks #peek {
@@ -551,6 +570,53 @@ video {
   background-image: url("../assets/images/burgermonster.jpg");
   background-size: 100% 100%;
 }
+
+#myworks #burgerboy {
+  background-image: url("../assets/images/burgerboy.png");
+  background-size: 150% 100%;
+  background-position: -50 0;
+}
+
+#myworks #electricchair {
+  background-image: url("../assets/images/vrelectricchair.png");
+  background-size: 100% 100%;
+}
+
+#myworks #icebucketblast {
+  background-image: url("../assets/images/iceblast.png");
+  background-size: 100% 100%;
+}
+
+/*#myworks #peek:hover, #myworks #stylelust:hover, #myworks #mariotictactoe:hover, #myworks #burgermonster:hover, #myworks #burgerboy:hover, #myworks #electricchair:hover, #myworks #icebucketblast:hover {
+  background-image: none;
+} 
+
+#myworks .projectTile h3, #myworks .projectTile h5 {
+  visibility: visible;
+  text-align: center;
+}
+
+#myworks .projectTile:hover h3, #myworks .projectTile:hover h5 {
+  visibility: visible;
+  color: white;
+}*/
+
+#myworks .portal {
+  position: absolute;
+  z-index: 6;
+  height: 50%;
+}
+
+#myworks #portal1 {
+  left: 17%;
+}
+#myworks #portal2 {
+  left: 2%;
+}
+#myworks #portal3 {
+  right: 10%;
+}
+
 
 
 /* ===================================
