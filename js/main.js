@@ -63,20 +63,20 @@ Chocobo Animation
   /* ======================================================================
   Loop through each link in the navbar and add event listeners
   ====================================================================== */
-  var links = document.getElementById("navbar-links").children[0].children;
-  for (var i=0; i<links.length; i++){
-    writeEventListener(links, i);
-  }
+  // var links = document.getElementById("navbar-links").children[0].children;
+  // for (var i=0; i<links.length; i++){
+  //   writeEventListener(links, i);
+  // }
 
-  /* ======================================================================
-  Scroll to top of page when the navbar logo is clicked
-  ====================================================================== */
-  document.getElementById("navbar-logo").addEventListener("click", function(){
-    $('html, body').animate({
-        scrollTop: $("#home").offset().top,
-      }, 1000);
-    removeClassActive(links);
-  });
+  // /* ======================================================================
+  // Scroll to top of page when the navbar logo is clicked
+  // ====================================================================== */
+  // document.getElementById("navbar-logo").addEventListener("click", function(){
+  //   $('html, body').animate({
+  //       scrollTop: $("#home").offset().top,
+  //     }, 1000);
+  //   removeClassActive(links);
+  // });
 
   /* ======================================================================
   Add mouseover listener to whatido section
@@ -100,35 +100,23 @@ Chocobo Animation
     });
   }
 
-
-  
 });
+  
 
-/* ======================================================================
-Scroll to section of page when navbar link is clicked
-====================================================================== */
-function writeEventListener(links, i) {
-  var name = links[i].innerText.split(" ").join("").toLowerCase();
-  links[i].addEventListener('click', function(){
-      clicked = true;
-      $('html, body').animate({
-        scrollTop: $("#" + name).offset().top
-      }, 1000,function(){clicked = false;});
-      //change the active class so the navbar item is selected
-      changeActive(links, i);
-    });
+
 
   /* ======================================================================
   When Scrolling have the nav bar switch what section it is on
   ====================================================================== */
+
   window.addEventListener("scroll", function(e){
-      if (!clicked) {
-      var length = 1;
-      var scrollItem = document.getElementById(name);
-      var navBarHeight = document.getElementsByTagName("nav")[0].offsetHeight;
+      //if (!clicked) {
+      //var length = 1;
+      //var scrollItem = document.getElementById(name);
+      //var navBarHeight = document.getElementsByTagName("nav")[0].offsetHeight;
       //each if statement checks to see if the section hits the navbar
       //it also changes which navbar item has class active, if it runs all the way through the last item will take priority and be active
-      if (scrollItem.offsetTop - navBarHeight <= window.pageYOffset && links.length - length >= 0 && i == links.length - length++){
+      /*if (scrollItem.offsetTop - navBarHeight <= window.pageYOffset && links.length - length >= 0 && i == links.length - length++){
         changeActive(links, i);
       }
       else if (scrollItem.offsetTop - navBarHeight <= window.pageYOffset && links.length - length >= 0 && i == links.length - length++){
@@ -144,16 +132,16 @@ function writeEventListener(links, i) {
       else if (document.getElementById("home").offsetHeight - navBarHeight >= window.pageYOffset && links.length - length >= 0 && i == links.length - length++){
         removeClassActive(links);
       }
-      if (window.pageYOffset < document.getElementById("aboutme").offsetTop) {
-        var background = document.getElementById("background");
-        var home = document.getElementById("home");
-        background.style.top = window.pageYOffset + "px";
-      }
+      */
+    if (window.pageYOffset < document.getElementById("aboutme").offsetTop) {
+      var background = document.getElementById("background");
+      var home = document.getElementById("home");
+      background.style.top = window.pageYOffset + "px";
+    }
 
-      //start pokemon sequence
-      if (window.pageYOffset >= document.getElementById("aboutme").offsetTop - document.getElementById("aboutme").offsetHeight / 10){
-        launchPokeball();
-      }
+    //start pokemon sequence
+    if (window.pageYOffset >= document.getElementById("aboutme").offsetTop - document.getElementById("aboutme").offsetHeight / 10){
+      launchPokeball();
     }
   });
 
@@ -161,26 +149,28 @@ function writeEventListener(links, i) {
 
 
 
-}
 
 
-/* ======================================================================
-Remove active class from all the links
-====================================================================== */
-function removeClassActive(links){
-  for(var j=0; j<links.length; j++){
-        $(links[j]).removeClass("active");
-      }
-}
 
 
-/* ======================================================================
-Add active class to only one link
-====================================================================== */
-function changeActive(links, i){
-  removeClassActive(links);
-  $(links[i]).addClass("active");
-}
+
+//  ======================================================================
+// Remove active class from all the links
+// ====================================================================== 
+// function removeClassActive(links){
+//   for(var j=0; j<links.length; j++){
+//         $(links[j]).removeClass("active");
+//       }
+// }
+
+
+//  ======================================================================
+// Add active class to only one link
+// ====================================================================== 
+// function changeActive(links, i){
+//   removeClassActive(links);
+//   $(links[i]).addClass("active");
+// }
 
 
 function launchPokeball() {
@@ -314,7 +304,7 @@ function bringInPokedex() {
   pokedexImage.id = "pokedexImage";
   pokedexText.id = "pokedexText";
   pokedex.id = "pokedex";
-  pokedex.style.width = (((container.offsetWidth / 1.75) / container.offsetWidth) * 100) + "%";
+  pokedex.style.width = (((container.offsetWidth / 1.5) / container.offsetWidth) * 100) + "%";
   pokedex.style.height = (pokedex.offsetWidth * 0.75) + "px";
   pokedex.style.backgroundImage = "url('assets/images/pokedex.png')";
   pokedex.style.backgroundPosition = "-1px 0";
@@ -322,8 +312,8 @@ function bringInPokedex() {
   pokedex.style.backgroundSize = "cover";
   pokedex.style.backgroundRepeat = "no-repeat"
   //need to animate pokedex coming into screen
-  pokedex.style.top = (container.offsetTop + container.offsetHeight - pokedex.offsetHeight - (container.offsetHeight * 0.10)) + "px";
-  pokedex.style.left = "2%";
+  pokedex.style.top = container.offsetTop + 25 + "px";
+  pokedex.style.left = "1%";
   animatePokedex();
 }
 
@@ -374,14 +364,14 @@ function printPokedex() {
 
   pokedexImage.style.height = (pokedex.offsetHeight / 2.25) + "px";
   pokedexImage.style.width = (pokedex.offsetWidth / 3) + "px";
-  pokedexImage.style.left = "11%";
+  pokedexImage.style.left = "10%";
   pokedexImage.style.top = "27.5%";
   pokedexImage.style.backgroundPosition = "0 50px";
   pokedexImage.innerHTML = "<h1>Kendrick Parks</h1>"
 
   pokedexText.style.height = (1.725 * pokedex.offsetHeight / 3) + "px";
   pokedexText.style.width = (1.055 * pokedex.offsetWidth / 3) + "px";
-  pokedexText.style.left = "60.5%";
+  pokedexText.style.left = "60%";
   pokedexText.style.top = "25.75%";
 
   animateAboutMeText();

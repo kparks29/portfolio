@@ -183,8 +183,6 @@ video {
 }
 
 #aboutme #pokedexText {
-  overflow: scroll;
-  margin: 20px;
   background-color: transparent;
 }
 
