@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Simple Cube</title>
+  <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="glam.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      glam.ready();
+
+    });
+  </script>
+  <style>
+    #photocube {
+      image:url(/glam/images/bowieorangeglam.png);
+      /*color: blue;*/
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Cube</h1>
+  <h3>The point of this project is to successfully load GLAM and display a cube and use a camera.</h3>
+  <glam>
+    <scene>
+      <cube id="photocube" ry="45"></cube>
+      <camera id="mainCamera" y="-1"></camera>
+    </scene>
+  </glam> 
+</body>
+</html>

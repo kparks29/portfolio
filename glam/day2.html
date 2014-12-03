@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Groups of Shapes</title>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="glam.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      glam.ready();
+
+    });
+  </script>
+  <style>
+    #cube {
+      color: orange;
+      shader: lambert;
+    }
+    #cone {
+      color: purple;
+      shader: phong;
+      radius: 1;
+    }
+    #sphere {
+      diffuse-color: green;
+      shader: phong;
+      specular-color: #004400;
+      opacity: 0.8;
+    }
+    #cylinder {
+      color: black;
+      render-mode: wireframe;
+    }
+    #text {
+      diffuse-color: blue;
+      shader: phong;
+      font-bevel: bevel;
+    }
+  </style>
+</head>
+<body>
+  <h1>Groups of Shapes</h1>
+  <h3>The point of this project is to create multiple kinds of shapes and move place them into different positions using groups.</h3>
+  <glam>
+    <scene>
+      <group id="group1" x="-1" y="0.5" z="2">
+        <group id="group1_1" x="-0.5" y="-0.25" z="-0.5">
+          <cone id="cone" x="6.2" y="2.1" z="-8" rz="-45deg"></cone>
+        </group>
+        <cylinder id="cylinder" radius="0.5" x="-2" y="1.8" z="-5" rx="-0.7" rz="-0.3"></cylinder>
+        <cube id="cube" depth="0.5" x="-2"></cube>
+      </group>
+      <group id="group2" x="1" y="-0.5">
+        <sphere id="sphere" radius="1.5"></sphere>
+        <text id="text" value="Ellie, you rock!" y="1" z="-10" ry="20deg">
+      </group>
+      <camera x="-0.5" y="-1" rx="0.1"></camera>
+    </scene>
+  </glam> 
+</body>
+</html>
