@@ -9,6 +9,7 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  width: 100%;
 }
 
 .double-sided {
@@ -112,7 +113,7 @@ nav {
   font-size: 25px;
   position: relative;
   top: 75%;
-  left: 42%;
+  text-align: center;
 }
 
 #chocobo {
@@ -124,6 +125,7 @@ nav {
   position: relative;
   top: 70%;
   left: 100%;
+  margin: 0;
 }
 #home #filter {
   height: 100%;
@@ -173,7 +175,7 @@ nav {
 }
 
 #aboutme #pokedexImage {
-  background-image: url('../assets/images/kendrick.png');
+  background-image: url('../assets/images/kenFullBody2.png');
   background-size: cover;
   background-repeat: no-repeat;
 }

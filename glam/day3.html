@@ -1,25 +1,126 @@
 <html>
 <head>
-  <title>Day 3</title>
+  <title>Hover and Clicks</title>
   <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
   <script type="text/javascript" src="glam.min.js"></script>
   <script>
     $(document).ready(function(){
-      glam.ready();
+      var cube = document.getElementById("cube");
+      var returner = document.getElementById("return");
+        cube.addEventListener("mouseover", function(){
+          cube.setAttribute("diffuse-color", "red");  
+        });
+        cube.addEventListener("mouseout", function(){
+          cube.setAttribute("diffuse-color", "green");  
+        });
+        cube.addEventListener("click", function(){
+          document.getElementById("queue").appendChild(cube);
+          returner.style.visibility = "visible";
+        });
+        returner.addEventListener("click", function(){
+          console.log("click")
+          returner.style.visibility = "hidden";
+          var children = document.getElementById("queue").children;
+          var found = false;
+          for(var i = 0; i < children.length; i++) {
+              if (children[i].id == 'cube') {
+                  found = true;
+                  break;
+              }
+          }
+          if (found) {
+            document.getElementsByTagName("scene")[0].appendChild(cube);
+          }
+          console.log()
+        });
 
+        for (var i=0; i<100; i++) {
+          var cyl = document.createElement("cylinder")
+          cyl.setAttribute("z", Math.floor(Math.random() * -10) + "");
+          var negOrPos;
+          if (Math.floor(Math.random() * 100) >= 50){
+            negOrPos = -1;
+          }
+          else {
+            negOrPos = 1;
+          }
+          cyl.setAttribute("x", Math.floor(Math.random() * 10 * negOrPos) + "");
+          if (Math.floor(Math.random() * 100) >= 50){
+            negOrPos = -1;
+          }
+          else {
+            negOrPos = 1;
+          }
+          cyl.setAttribute("y", Math.floor(Math.random() * 5 * negOrPos) + "");
+          cyl.class = "cylinder";
+          document.getElementsByTagName("scene")[0].appendChild(cyl);
+        }
+        $("cylinder").on("mouseover", function(){
+          
+          $(this).attr("diffuse-color", "red")
+        });
+        // $("cylinder").click(function(){
+        //   console.log("clicked")
+        //   if (Math.floor(Math.random() * 100) >= 50){
+        //     negOrPos = -1;
+        //   }
+        //   else {
+        //     negOrPos = 1;
+        //   }
+        //   $(this).animate({
+        //     $(this).attr("x", negOrPos);
+        //   }, 500)
+        // });
+
+      glam.ready()
     });
   </script>
   <style>
-    
+    #cube {
+      /*rx: 20deg;*/
+      ry: 40deg;
+      diffuse-color: green;
+      shader: phong;
+    }
+    #return {
+      color: black;
+      position: absolute;
+      z-index: 5;
+      bottom: 10%;
+      left:10%;
+      height: 50px;
+      width: 200px;
+      border-radius: 25px;
+      background-color: #aa0000;
+      padding: 1% 0 0 2%;
+      visibility: hidden;
+    }
+    #return:hover {
+      background-color: #ff0000;
+    }
+    .camera {
+      y: 2;
+      z: 10;
+    }
+    .cylinder {
+      rx: 60deg;
+      height: 0.1;
+      color: green;
+      radius: 0.2;
+    }
   </style>
 </head>
 <body>
-  <h1></h1>
-  <h3></h3>
+  <h1>Hover and Clicks</h1>
+  <h3>The purpose of this is to add hover and click events on and off the canvas to control the objects on the canvas.  Also test a queue system for later use.  Yes there is a christmasy feel to this one.  (hovering seems to be off by a bit.</h3>
   <glam>
     <scene>
-    
+      <camera class="camera"></camera>
+      <cube id="cube"></cube>
+      <cylinder class="cylinder" z="-2"></cylinder>
     </scene>
-  </glam> 
+  </glam>
+  <h1 id="return">Return Cube</h1> 
+  <div id="queue"></div>
 </body>
 </html>

@@ -1,7 +1,9 @@
 var clicked = false;
 var ranPokeball = false;
 var pokeballSpin;
+
 $(document).ready(function(){
+
 
 /* ======================================================================
 Welcome Text Animation and Sound
@@ -12,6 +14,9 @@ Welcome Text Animation and Sound
   var topPosition = text.offsetTop;
   var soundClip = new Audio("assets/sounds/opening.mp3");
   soundClip.play();
+
+  
+
 
   var textGrower = setInterval(function(){
     time += 50;
@@ -99,6 +104,27 @@ Chocobo Animation
       $(this).addClass("drop");
     });
   }
+
+  // loadVideo();
+
+  // function loadVideo() {
+  //   console.log("loaded");
+  //   var contact = document.getElementById("contact");
+  //   var video = document.createElement("video");
+  //   var source = document.createElement("source");
+  //   video.autoplay= "true";
+  //   video.id = "contactVideo";
+  //   source.type = "video/mp4"
+  //   source.src = "assets/contactvideo.mp4";
+  //   video.appendChild(source);
+
+  //   document.addEventListener("scroll", function(e){
+  
+  //     console.log(e)
+  //     console.log(contact.offsetTop)
+
+  //   });
+  // }
 
 });
   
@@ -269,8 +295,9 @@ function showPokeKendrick() {
   container.appendChild(kendrick);
   kendrick.id = "kendrick";
   kendrick.style.position = "absolute";
-  kendrick.style.backgroundImage = "url('assets/images/kendrick.png')";
-  kendrick.style.backgroundSize = "cover";
+  kendrick.style.backgroundImage = "url('assets/images/kenFullBody2.png')";
+  kendrick.style.backgroundRepeat = "no-repeat";
+  kendrick.style.backgroundSize = "100% 60%";
 
 
   var height = 0;
@@ -279,11 +306,11 @@ function showPokeKendrick() {
     kendrick.style.width = Math.round(height*0.559) + "px";
     kendrick.style.height = height + "px";
     kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-    kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.25)+ "px";
+    kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.5)+ "px";
     if (height >= 487){
       clearInterval(kendrickGrower);
       kendrick.style.left = (pokeball.offsetLeft + kendrick.offsetWidth/2)  + "px"
-      kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.25)+ "px";
+      kendrick.style.top =  (pokeball.offsetTop - kendrick.offsetHeight/1.5)+ "px";
       pokeball.style.display = "none"; 
       bringInPokedex(); 
     }

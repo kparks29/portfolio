@@ -15,7 +15,6 @@ $(document).ready(function(){
   projects[5].style.top = (title.offsetTop + title.offsetHeight + 50) + "px";
   projects[6].style.top = title.offsetTop + "px";
   for (var i=0; i<projects.length; i++) {
-    console.log(i)
     portals[i].style.top = (projects[i].offsetTop - 20) + "px";
     portals[i].style.left = (projects[i].offsetLeft - 30) + "px";
     covers[i].style.top = (projects[i].offsetTop - 20) + "px";
@@ -41,5 +40,7 @@ $(document).ready(function(){
       covers[i].style.visibility = "visible";
     });
   }
+
+  
 
 });
