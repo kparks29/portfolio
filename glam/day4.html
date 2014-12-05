@@ -133,6 +133,25 @@
       -webkit-animation-timing-function: linear;
     }
 
+    @-webkit-keyframes expand {
+      0% {
+        -webkit-transform: scaleX(0.5) scaleZ(0.5);
+      }
+      50% {
+        -webkit-transform: scaleX(3) scaleZ(3);
+      }
+      100% {
+        -webkit-transform: scaleX(0.5) scaleZ(0.5);
+      }
+    }
+
+    .animaExpand {
+      -webkit-animation-duration: 3s;
+      -webkit-animation-name: expand;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: ease-in-out;
+    }
+
   </style>
 </head>
 <body>
