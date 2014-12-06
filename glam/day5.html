@@ -1,0 +1,59 @@
+<html>
+<head>
+  <title>Models and Skybox</title>
+  <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="glam.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      glam.ready();
+      var ry = 0;
+      // var rz = 0;
+      // var rx = 0;
+      
+      $(document).on("keydown", function(e){
+        
+        console.log(ry);
+        if (e.keyCode == 39) {
+          ry -= 0.05;
+        }
+        else if (e.keyCode == 37) {
+          ry += 0.05;
+        }
+        // else if (e.keyCode == 38) {
+        //   rz += 0.05;
+        //   rx += 0.1;
+        // }
+        // else if (e.keyCode == 40) {
+        //   rz -= 0.05;
+        //   rx -= 0.1;
+        // }
+        $("#mainCamera").attr("ry", "" + ry + "deg");
+        // $("#mainCamera").attr("rz", "" + rz + "deg");
+        // $("#mainCamera").attr("rx", "" + rx + "deg");
+      });
+    });
+  </script>
+  <style>
+    #skybox {
+      background-type: box;
+      cube-image-front: url(./images/skyboxfront.jpg);
+      cube-image-back: url(./images/skyboxback.jpg);
+      cube-image-left: url(./images/skyboxleft.jpg);
+      cube-image-right: url(./images/skyboxright.jpg);
+      cube-image-top: url(./images/skyboxtop.jpg);
+      cube-image-bottom: url(./images/skyboxbottom.jpg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Import Models and Skybox</h1>
+  <h3>The point of this project is to successfully import a model and skybox.  Use left and right arrows to rotate.</h3>
+  <glam>
+    <scene>
+      <import src="./images/futurgo_city.dae" y="40"></import>
+      <background id="skybox"></background>
+      <camera id="mainCamera" fov="90" y="40"></camera>
+    </scene>
+  </glam> 
+</body>
+</html>
