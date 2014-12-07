@@ -3,11 +3,11 @@
   $name = $_POST["name"];
   $body = $_POST["body"];
   $email = $_POST["email"];
-  $likedSite = $_POST["liked"];
+  $liked = $_POST["liked"];
 
   $to      = 'parks.kendrick@gmail.com';
   $subject = 'Contact form From Portfolio';
-  $message = "Message from Portfolio Page: \r\n" . $body . "\r\n Liked Site: " . $likedSite . "\r\n";
+  $message = "Message from Portfolio Page: \r\n" . $body . "\r\n Liked Site: " . $liked . "\r\n";
   $header = "To: Kendrick <parks.kendrick@gmail.com>\r\n";
   $header.= "From: Portfolio <contact@kendrickparks.com>\r\n"; 
   $header.= "MIME-Version: 1.0\r\n"; 

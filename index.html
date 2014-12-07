@@ -5,9 +5,9 @@
   <link href='http://fonts.googleapis.com/css?family=Fresca' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <script type="text/javascript" src="js/lib/jquery.min.js"></script>
-  <!--script type="text/javascript" src="js/lib/three.min.js"></script-->
+  <script type="text/javascript" src="js/lib/three.min.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-  <!--script type="text/javascript" src="js/webgl.js"></script-->
+  <script type="text/javascript" src="js/webgl.js"></script>
   <script type="text/javascript" src="js/projects.js"></script>
   <script type="text/javascript" src="js/contact.js"></script>
 </head>
@@ -150,11 +150,11 @@
     <div id="contactForm">
       <h4>Contact Me</h4>
       <form role="form" method="post" action="mailer.php">
-        <p>Name: <input type="name" class="form-control" id="name" name="name" placeholder="Enter name"></p>
-        <p>Email address: <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"></p>
-        <p>Message: <textarea type="text" class="form-control" id="message" name="body" placeholder="Enter message"></textarea></p>
-        <p><input type="checkbox">Liked My Site Site?</p>
-        <p><button type="submit" class="btn btn-default contactBtn">Submit</button></p>
+        <p>Name: <input type="name" id="name" name="name" placeholder="Enter name"></p>
+        <p>Email address: <input type="email" id="email" name="email" placeholder="Enter email"></p>
+        <p>Message: <textarea type="text" id="message" name="body" placeholder="Enter message"></textarea></p>
+        <p><input type="checkbox" id="liked" name="liked">Liked My Site?</p>
+        <p><button type="submit">Submit</button></p>
       </form>
       <p>Link to Resume: <a href="https://docs.google.com/document/d/1H3NUNAb-OToDpC8f8ndKkd-VnCb9UNsZBsaINHQT2ss/edit?usp=sharing">Click Here</a></p>
       <p>Github Page: <a href="https://github.com/kparks29">Click Here</a></p>

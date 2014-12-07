@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>Terrain</title>
+  <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="glam.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      glam.ready();
+    });
+  </script>
+  <style>
+    #skybox {
+      sphere-image: url(./images/sphereskybox.jpg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Terrain</h1>
+  <h3>The point of this project is to successfully import a terrain with a bumpmap.</h3> 
+  <p><a href="index.html">HOME</a></p>
+  <glam>
+    <scene>
+      
+      <import src="./terrain.js"></import>
+      <background id="skybox" type="sphere"></background>
+      <camera id="mainCamera" fov="60" z="100" y="400" rx="-45deg"></camera>
+    </scene>
+  </glam> 
+</body>
+</html>

@@ -646,8 +646,8 @@ nav {
   width: 100%;
 }
 
-#contact #contactForm form p {
-
+#contact #contactForm form p input, #contact #contactForm form p textarea {
+  color: black;
 }
 
 #contact #contactForm a:visited {

@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>Camera Animation</title>
+  <script type="text/javascript" src="../js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="glam.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      glam.ready();
+    });
+  </script>
+  <style>
+    #skybox {
+      background-type: box;
+      cube-image-front: url(./images/skyboxfront.jpg);
+      cube-image-back: url(./images/skyboxback.jpg);
+      cube-image-left: url(./images/skyboxleft.jpg);
+      cube-image-right: url(./images/skyboxright.jpg);
+      cube-image-top: url(./images/skyboxtop.jpg);
+      cube-image-bottom: url(./images/skyboxbottom.jpg);
+    }
+  </style>
+</head>
+<body>
+  <h1>Camera Animation</h1>
+  <h3>The point of this project is to successfully create a glam animation that navigates you through the scene.</h3> 
+  <p><a href="index.html">HOME</a></p>
+  <glam>
+    <scene>
+      <animation id="animaGlide" duration="30s" iteration-count="infinite" timing-function="linear">
+        <keyframe time="0%" property="transform" value="translateX(0) translateY(0) translateZ(0) rotateX(20deg) rotateY(0)"></keyframe>
+        <keyframe time="20%" property="transform" value="translateX(0) translateY(0) translateZ(-50) rotateX(20deg) rotateY(0)"></keyframe>
+        <keyframe time="30%" property="transform" value="translateX(0) translateY(30) translateZ(-50) rotateX(0) rotateY(-135deg)"></keyframe>
+        <keyframe time="35%" property="transform" value="translateX(0) translateY(40) translateZ(-50) rotateX(0) rotateY(-225deg)"></keyframe>
+        <keyframe time="50%" property="transform" value="translateX(-65) translateY(40) translateZ(45) rotateX(0) rotateY(-225deg)"></keyframe>
+        <keyframe time="60%" property="transform" value="translateX(-65) translateY(40) translateZ(45) rotateX(0) rotateY(-90deg)"></keyframe>
+        <keyframe time="80%" property="transform" value="translateX(-5) translateY(45) translateZ(45) rotateX(0) rotateY(-90deg)"></keyframe>
+        <keyframe time="90%" property="transform" value="translateX(0) translateY(10) translateZ(20) rotateX(0) rotateY(-40deg)"></keyframe>
+        <keyframe time="100%" property="transform" value="translateX(0) translateY(0) translateZ(0) rotateX(20deg) rotateY(0)"></keyframe>
+      </animation>
+      <import src="./images/futurgo_city.dae"></import>
+      <background id="skybox"></background>
+      <camera id="mainCamera" fov="60" animation="animaGlide"></camera>
+    </scene>
+  </glam> 
+</body>
+</html>
